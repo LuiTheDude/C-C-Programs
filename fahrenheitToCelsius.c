@@ -2,22 +2,22 @@
 
 int main()
 
-/* print Celsius-Fahrenheit table
- for celsius = -100, -95, -90 ..., 100 */
+/* print Fahrenheit-Celsius table
+ for fahr = 0, 20, ..., 300 */
 
 {
     int fahr, celsius;
     int lower, upper, step;
-    lower = -100; /* lower limit of temperature scale */
-    upper = 100; /* upper limit */
-    step = 5; /* step size */
+    lower = 0; /* lower limit of temperature scale */
+    upper = 300; /* upper limit */
+    step = 20; /* step size */
 
-    celsius = lower;
+    fahr = lower;
 
-    while (celsius <= upper)
+    while (fahr <= upper)
     {
-        fahr = (5 * celsius / 9 - 32);
-        printf("%d\t%d\n", celsius, fahr);
-        celsius = celsius + step;
+        celsius = 5 * (fahr-32) / 9;
+        printf("%d\t%d\n", fahr, celsius);
+        fahr = fahr + step;
     }
 }
