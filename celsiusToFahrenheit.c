@@ -6,8 +6,10 @@ int main()
  for celsius = -100, -95, -90 ..., 100 */
 
 {
-    int fahr, celsius;
-    int lower, upper, step;
+    printf("Celsius-Fahrenheit table\n");
+
+    float fahr, celsius;
+    float lower, upper, step;
     lower = -100; /* lower limit of temperature scale */
     upper = 100; /* upper limit */
     step = 5; /* step size */
@@ -16,8 +18,8 @@ int main()
 
     while (celsius <= upper)
     {
-        fahr = (9 * celsius / 5) - 32;
-        printf("%d\t%d\n", celsius, fahr);
+        fahr = (celsius * (9.0 / 5.0)) - 32;
+        printf("%3.0f %6.1f\n", celsius, fahr);
         celsius = celsius + step;
     }
 }
