@@ -5,11 +5,7 @@ int main(){
 
     nl = 1;        
     while ((c = getchar()) != EOF)  
-        if (c == '\n')                
+        if (c == '\n' || c == '\t' || c == '\b')                
             ++nl;
-        else if(c == '\t')
-            ++nl;
-        else if(c == '\b')
-            ++nl;  
     printf("%d\n", nl);
 }
