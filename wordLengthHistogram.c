@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+void astNum(int num){
+    for (int i = 0; i < num; i++){
+        printf("*");
+    }
+    printf("\n");
+}
 int main() {
     int c;
     int lengthCounter = 0;
@@ -24,7 +30,8 @@ int main() {
     printf("Word lengths:\n");
     for (int i = 0; i < 25; i++) {
         if (lengthsArray[i] != 0) {
-            printf("%d: %d\n", (i + 1), lengthsArray[i]);
+            printf("%d:", (i + 1));
+            astNum(lengthsArray[i]);
         }
     }
     return 0;
