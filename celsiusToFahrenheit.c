@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int celsToFahr(int cels);
+
 int main()
 
 /* print Celsius-Fahrenheit table
@@ -18,8 +20,12 @@ int main()
 
     while (celsius <= upper)
     {
-        fahr = (celsius * (9.0 / 5.0)) - 32;
+        fahr = celsToFahr(celsius);
         printf("%3.0f %6.1f\n", celsius, fahr);
         celsius = celsius + step;
     }
+}
+
+int celsToFahr(int cels){
+    return (cels * (9.0 / 5.0)) - 32;
 }
