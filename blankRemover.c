@@ -2,7 +2,7 @@
 
 #define MAXLINE 1000
 
-int getLine(char line[], int max_line_len);
+int getLine(char line[], int maxline);
 void removeTrailingBlanks(char line[], int length);
 
 int main(void){
@@ -18,10 +18,10 @@ int main(void){
     return 0;
 }
 
-int getLine(char line[], int max_line_len){
+int getLine(char line[], int maxline){
     int c, i;
 
-    for (i = 0; i < max_line_len - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+    for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
     {
     line[i] = c;
     }
