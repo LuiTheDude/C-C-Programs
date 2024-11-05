@@ -40,7 +40,7 @@ int htoi(const char hexString[]){
         else{
             printf("invalid hexadecimal character %c\n", c);
         }
-        result = result * 16 + hexValue;
+        result = result << 4 | hexValue;
         i++;
     }
     return result;
