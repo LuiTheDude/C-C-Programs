@@ -24,7 +24,7 @@ void expand(char s1[], char s2[]){
 }
 
 int main(){
-    char s1[1000] = "a-b-z0-9";
+    char s1[1000] = "a-z0-9";
     char s2[1000];
 
     expand(s1, s2);
