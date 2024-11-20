@@ -1,5 +1,9 @@
-#include <stdio.c>
+#include <stdio.h>
+
+void itoa(int n, char s[]){
+    
+}
 
 int main(){
-    
+
 }
