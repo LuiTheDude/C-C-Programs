@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <math.h>
 
-double atof(char s[]){
+double atof2(char s[]){
     double value, power;
-    int i, sign;
+    int i, sign, exponentSign = 1, exponentPower = 0;
     
-    for (i = 0; isspace(s[i]) == ' '; i++);
+    for (i = 0; isspace(s[i]) == ' '; i++)
+        ;
     sign = (s[i] == '-') ? -1 : 1;
     
     if (s[i] == '+' || s[i] == '-')
@@ -20,17 +22,29 @@ double atof(char s[]){
         power = power * 10;
         value = value * 10.0 + (s[i] - '0');
     }
-    return sign * value / power;
+    if (s[i] == 'e' || s[i] == 'E'){
+        i++;
+        if(s[i] == '-' || s[i] == '+'){
+            exponentSign = (s[i] == '-') ? -1 : 1;
+            i++;
+        }
+        while(isdigit(s[i])){
+            exponentPower = exponentPower * 10 + (s[i] - '0');
+            i++;
+        }
+    }
+
+    return (sign * value / power) * pow(10, exponentSign * exponentPower);
 }
 
 int main(){
-    char doubleString1[] = "3123.32";
+    char doubleString1[] = "3123.32e2";
     char doubleString2[] = "3123.32678";
-    char doubleString3[] = "3.2";
+    char doubleString3[] = "3.2e-4";
 
-    double double1 = atof(doubleString1);
-    double double2 = atof(doubleString2);
-    double double3 = atof(doubleString3);
+    double double1 = atof2(doubleString1);
+    double double2 = atof2(doubleString2);
+    double double3 = atof2(doubleString3);
 
     printf("\"%s\":   %f\n", doubleString1, double1);
     printf("\"%s\":   %f\n", doubleString2, double2);
