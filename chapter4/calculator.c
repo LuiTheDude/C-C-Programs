@@ -7,18 +7,18 @@
 #define NUMBER  '0'
 #define MAXVAL  100
 
-int sp = 0; //stack position
-double val[MAXVAL];
+int stackPosition = 0; //stack position
+double value[MAXVAL];
 
 void push(double f){
-    if (sp < MAXVAL)
-        val[sp++] = f;
+    if (stackPosition < MAXVAL)
+        value[stackPosition++] = f;
     else
         printf("error: stack full, can't push %g\n", f);
 }
 double pop(void){
-    if (sp > 0)
-        return val[--sp];
+    if (stackPosition > 0)
+        return value[--stackPosition];
     else{
         printf("error: stack empty\n");
         return 0.0;
@@ -27,17 +27,17 @@ double pop(void){
 
 #define BUFSIZE 100
 
-char buf[BUFSIZE];
-int bufp = 0;
+char buffer[BUFSIZE];
+int bufferPosition = 0;
 
 int getch(void){
-    return (bufp > 0) ? buf[--bufp] : getchar();
+    return (bufferPosition > 0) ? buffer[--bufferPosition] : getchar();
 }
 void ungetch(int c){
-    if (bufp >= BUFSIZE)
+    if (bufferPosition >= BUFSIZE)
         printf("ungetch: too many charecters\n");
     else 
-        buf[bufp++] = c;
+        buffer[bufferPosition++] = c;
 }
 
 int getop(char s[]){
