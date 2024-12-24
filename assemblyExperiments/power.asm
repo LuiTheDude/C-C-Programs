@@ -2,15 +2,15 @@ global _start
 
 section .text
 _start:
-    mov ebx, 1  ;start ebx at 1
-    mov ecx, 5  ;number of iterations
+    mov rbx, 1  ;start rbx at 1
+    mov rcx, 5  ;number of iterations
 label:
-    add ebx, ebx    ;ebx += ebx
-    dec ecx         ;ecx--
-    cmp ecx, 0      ;compare ecx to 0
+    add rbx, rbx    ;rbx += rbx
+    dec rcx         ;rcx--
+    cmp rcx, 0      ;compare rcx to 0
     jg label        ;jump to label if greater
     mov rax, 60     ;syscall number for sys_exit
-    mov edi, ebx      ;exit code 0
+    mov rdi, rbx      ;exit code 0
     syscall
 
 
