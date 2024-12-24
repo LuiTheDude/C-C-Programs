@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <ctype.h>
+#include <string.h>
 
 #define MAXOP   100
 #define NUMBER  '0'
@@ -94,16 +95,48 @@ int getop(char s[]) {
     return NUMBER;
 }
 
+void clearStack(){
+    int i = 0;
+    for (; i < stackPosition; i++){
+        value[i] = 0;
+        stackPosition--;
+    }
+}
+void printTopElement(){
+    printf("Top element:%.2f", value[stackPosition]);
+}
+void dublicateTopElement(){
+    int temp;
+    temp = value[stackPosition];
+    value[++stackPosition] = temp;
+}
+void swapTopElements(){
+    int temp = value[stackPosition];
+    value[stackPosition] = value[stackPosition-1];
+    value[stackPosition-1] = temp;
+}
 // Main RPN calculator function
 int main() {
     int type;
     double op2;
     char s[MAXOP];
 
-    printf("Enter RPN expressions (e.g., '3 4 +'):\n");
+    printf("Enter RPN expressions (e.g., '3 4 +'),\nEnter C to clear stack,\nP to print top element without popping,\nD to dublicate top element,\nS to swap top 2 elements:\n");
 
     while ((type = getop(s)) != EOF) {
         switch (type) {
+            case 'C':
+                clearStack();
+                break;
+            case 'P':
+                printTopElement();
+                break;
+            case 'D':
+                dublicateTopElement();
+                break;
+            case 'S':
+                swapTopElements();
+                break;
             case NUMBER:
                 push(atof(s));
                 break;
