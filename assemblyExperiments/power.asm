@@ -9,8 +9,9 @@ label:
     dec ecx         ;ecx--
     cmp ecx, 0      ;compare ecx to 0
     jg label        ;jump to label if greater
-    mov eax, 1      ;sys_exit syscall
-    int 0x80
+    mov rax, 60     ;syscall number for sys_exit
+    mov edi, ebx      ;exit code 0
+    syscall
 
 
 ; 0x0000000000001129 <+0>:     endbr64 
