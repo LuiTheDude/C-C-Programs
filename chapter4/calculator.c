@@ -95,33 +95,51 @@ int getop(char s[]) {
     return NUMBER;
 }
 
-void clearStack(){
-    int i = 0;
-    for (; i < stackPosition; i++){
-        value[i] = 0;
-        stackPosition--;
+// Clear the stack
+void clearStack() {
+    stackPosition = 0;
+    printf("Stack cleared.\n");
+}
+
+// Print the top element of the stack without popping
+void printTopElement() {
+    if (stackPosition > 0) {
+        printf("Top element: %.8g\n", value[stackPosition - 1]);
+    } else {
+        printf("Stack is empty.\n");
     }
 }
-void printTopElement(){
-    printf("Top element:%.2f", value[stackPosition]);
+
+// Duplicate the top element of the stack
+void duplicateTopElement() {
+    if (stackPosition > 0 && stackPosition < MAXVAL) {
+        double top = value[stackPosition - 1];
+        push(top);
+        printf("Duplicated top element: %.8g\n", top);
+    } else {
+        printf("Error: Cannot duplicate top element.\n");
+    }
 }
-void dublicateTopElement(){
-    int temp;
-    temp = value[stackPosition];
-    value[++stackPosition] = temp;
+
+// Swap the top two elements of the stack
+void swapTopElements() {
+    if (stackPosition > 1) {
+        double temp = value[stackPosition - 1];
+        value[stackPosition - 1] = value[stackPosition - 2];
+        value[stackPosition - 2] = temp;
+        printf("Swapped top two elements.\n");
+    } else {
+        printf("Error: Not enough elements to swap.\n");
+    }
 }
-void swapTopElements(){
-    int temp = value[stackPosition];
-    value[stackPosition] = value[stackPosition-1];
-    value[stackPosition-1] = temp;
-}
+
 // Main RPN calculator function
 int main() {
     int type;
     double op2;
     char s[MAXOP];
 
-    printf("Enter RPN expressions (e.g., '3 4 +'),\nEnter C to clear stack,\nP to print top element without popping,\nD to dublicate top element,\nS to swap top 2 elements:\n");
+    printf("Enter RPN expressions (e.g., '3 4 +'),\nEnter C to clear stack,\nP to print top element without popping,\nD to duplicate top element,\nS to swap top 2 elements:\n");
 
     while ((type = getop(s)) != EOF) {
         switch (type) {
@@ -132,7 +150,7 @@ int main() {
                 printTopElement();
                 break;
             case 'D':
-                dublicateTopElement();
+                duplicateTopElement();
                 break;
             case 'S':
                 swapTopElements();
