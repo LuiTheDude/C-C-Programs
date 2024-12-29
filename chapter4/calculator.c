@@ -155,6 +155,22 @@ int main() {
             case 'S':
                 swapTopElements();
                 break;
+            case 's': //for sin
+                push(sin(pop()));
+                break;
+            case 'c': //for cos
+                push(cos(pop()));
+                break;
+            case 't': //for tan
+                push(tan(pop()));
+                break;
+            case 'p': //for power
+                op2 = pop();
+                push(pow(pop(), op2));
+                break;
+            case 'e': //for exponent
+                push(exp(pop()));
+                break;
             case NUMBER:
                 push(atof(s));
                 break;
